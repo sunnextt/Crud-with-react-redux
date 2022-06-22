@@ -21,10 +21,25 @@ const getSingleTasks = async (task_id_from_previous_test, company_id) => {
     return response.data;
 };
 
-const addTask = async (company_id) => {
+const addTask = async (
+    company_id,
+    assigned_user,
+    task_date,
+    task_time,
+    is_completed,
+    time_zone,
+    task_msg
+) => {
     const response = await slooveApi.post(
         `/task/lead_465c14d0e99e4972b6b21ffecf3dd691?company_id=${company_id}`,
-        {}
+        {
+            assigned_user,
+            task_date,
+            task_time,
+            is_completed,
+            time_zone,
+            task_msg
+        }
     );
     return response.data;
 };
@@ -36,9 +51,9 @@ const updateTask = async (taskId, company_id) => {
     return response.data;
 };
 
-const deleteTask = async (taskId, company_id) => {
-    const response = await slooveApi.put(
-        `/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${taskId}?company_id=${company_id}`
+const deleteTask = async (id, company_id) => {
+    const response = await slooveApi.delete(
+        `/task/lead_465c14d0e99e4972b6b21ffecf3dd691/${id}?company_id=${company_id}`
     );
     return response.data;
 };

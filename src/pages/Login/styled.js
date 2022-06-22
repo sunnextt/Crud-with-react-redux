@@ -9,6 +9,10 @@ const LoginWrp = styled.div`
     border-radius: 4px;
     box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
 
+    @media (max-width: 900px) {
+        width: 80%;
+    }
+
     input {
         display: block;
         box-sizing: border-box;

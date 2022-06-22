@@ -6,28 +6,30 @@ import { Routes, Route } from 'react-router-dom';
 
 import LoginPage from './pages/Login/loginPage';
 import GlobalStyled from './GlobalStyled';
-import { useSelector } from 'react-redux';
 import TaskPage from './pages';
+import RequireAuth from './utils/requireAuth';
 
 const theme = {
     color: '#FFFFFF'
 };
 
 function App() {
-    const { user: currentUser } = useSelector((state) => state.auth);
-
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyled />
-            {!currentUser ? (
-                <Routes>
-                    <Route path="/login" element={<LoginPage />} />
-                </Routes>
-            ) : (
-                <Routes>
-                    <Route path="/" element={<TaskPage />} />
-                </Routes>
-            )}
+            <Routes>
+                <Route path="/login" element={<LoginPage />} />
+            </Routes>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <RequireAuth>
+                            <TaskPage />
+                        </RequireAuth>
+                    }
+                />
+            </Routes>
         </ThemeProvider>
     );
 }

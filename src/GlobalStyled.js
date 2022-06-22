@@ -50,4 +50,21 @@ a:active:hover {
   padding: 10px 0;
   border-radius: 0 0 4px 4px;
 }
+
+.delIcon {
+        color: red;
+        cursor: pointer;
+    }
+
+ .editIcon {
+        color: blue;
+        cursor: pointer;
+    }
+
+    button {
+      cursor: pointer;
+      display: flex ;
+      justify-content: center;
+      align-items: center;
+    }
 `;
