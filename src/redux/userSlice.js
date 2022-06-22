@@ -70,9 +70,30 @@ export const addTask = createAsyncThunk(
 
 export const updateTask = createAsyncThunk(
     'users/update',
-    async ({ taskId, company_id }, { rejectWithValue }) => {
+    async (
+        {
+            task_id,
+            company_id,
+            assigned_user,
+            task_date,
+            task_time,
+            is_completed,
+            time_zone,
+            task_msg
+        },
+        { rejectWithValue }
+    ) => {
         try {
-            const { data } = await userService.updateTask(taskId, company_id);
+            const { data } = await userService.updateTask(
+                task_id,
+                company_id,
+                assigned_user,
+                task_date,
+                task_time,
+                is_completed,
+                time_zone,
+                task_msg
+            );
             return data;
         } catch (err) {
             let error = err; // cast the error for access
