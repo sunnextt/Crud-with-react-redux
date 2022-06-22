@@ -109,6 +109,7 @@ const CrudTask = () => {
         )
             .then(() => {
                 dispatch(getAllTasks({ company_id }));
+                toggleButton()
             })
             .catch(() => {});
     };
