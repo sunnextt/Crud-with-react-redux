@@ -33,6 +33,7 @@ const LoginPage = () => {
             .unwrap()
             .then(() => {
                 navigate('/', { replace: true });
+                window.location.reload(false);
             })
             .catch(() => {
                 setLoading(false);
