@@ -15,6 +15,7 @@ import Select from 'react-select';
 import { AddTaskDiv } from './styled';
 import { addTask, getAllTasks, getUserProfile } from '../../redux/userSlice';
 import timeConvert from '../../utils/timeCoverter';
+import { toast } from 'react-toastify';
 
 const completeOptions = [
     { value: 0, label: 'No' },
@@ -27,6 +28,8 @@ const CrudTask = () => {
         users: { data }
     } = useSelector((state) => state.users);
     let dispatch = useDispatch();
+
+    const notify = () => toast('Task created successfully');
 
     useEffect(() => {
         if (currentUser) {
@@ -109,7 +112,8 @@ const CrudTask = () => {
         )
             .then(() => {
                 dispatch(getAllTasks({ company_id }));
-                toggleButton()
+                toggleButton();
+                notify();
             })
             .catch(() => {});
     };

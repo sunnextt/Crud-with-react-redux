@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
 body {
   background-color: #c8d8e4;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
   color: #2b3e51;
 }

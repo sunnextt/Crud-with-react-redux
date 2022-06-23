@@ -7,6 +7,8 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { MdEdit } from 'react-icons/md';
 import userService from '../../services/userService';
 import UpdateModal from './updateForm';
+import { toast } from 'react-toastify';
+
 
 const Tasks = () => {
     const dispatch = useDispatch();
@@ -16,6 +18,8 @@ const Tasks = () => {
     } = useSelector((state) => state.users);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [taskId, setTaskId] = useState('');
+
+    const notify = () => toast('Task deleted successfully');
 
     const fetch = async () => {
         if (currentUser) {
@@ -37,6 +41,7 @@ const Tasks = () => {
                 .then((res) => {
                     console.log(res);
                     fetch();
+                    notify();
                 })
                 .catch(() => {});
         }

@@ -15,6 +15,7 @@ import Select from 'react-select';
 import { getAllTasks, updateTask } from '../../redux/userSlice';
 import timeConvert from '../../utils/timeCoverter';
 import userService from '../../services/userService';
+import { toast } from 'react-toastify';
 
 const completeOptions = [
     { value: 0, label: 'No' },
@@ -31,6 +32,8 @@ const UpdateModal = ({ isModalVisible, handleOk, handleCancel, id }) => {
 
     const [user, setUser] = useState([]);
     const [option, setOption] = useState();
+
+    const notify = () => toast('Task created successfully');
 
     useEffect(() => {
         if (currentUser && id) {
@@ -115,6 +118,7 @@ const UpdateModal = ({ isModalVisible, handleOk, handleCancel, id }) => {
             .then(() => {
                 dispatch(getAllTasks({ company_id }));
                 handleOk();
+                notify();
             })
             .catch((error) => {
                 console.log(error);
