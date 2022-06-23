@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 
 const completeOptions = [
     { value: 0, label: 'No' },
-    { value: 1, label: 'Yes' }
+    { value: 0, label: 'Yes' }
 ];
 
 const CrudTask = () => {
